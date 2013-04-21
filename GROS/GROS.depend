@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1366569025 source:/home/joao/Projects/gros/Prototypes/GROS/main.c
+	<stdio.h>
+	<stdlib.h>
+	<GL/glx.h>
+	<GL/gl.h>
+	<X11/X.h>
+	<X11/keysym.h>
+

@@ -1,0 +1,37 @@
+#ifndef DYNAMICMODEL_H
+#define DYNAMICMODEL_H
+
+#include <vector>
+#include "../constants.h"
+#include "dynamicmath.h"
+
+class DynamicModel: protected DynamicMath
+{
+    ///////////////////////////////////////////////////////////
+    //   A simple dynamic simulating class that considers constant
+    //  positive acceleration and uses simple quadratic formula for
+    //  integrating time and position
+    //  Receives 3D state, but doesn't model heading
+    //  Assumes movement (speed and acceleration) is linear between states
+    ///////////////////////////////////////////////////////////
+protected:
+    DynamicModel();
+    virtual ~DynamicModel();
+
+    void initModel	();
+
+    bool integrate  (State_t* state, float timeStep);
+
+
+    float stateDistance		(State_t initState, State_t endState);
+    float timeToTarget	(State_t initState, State_t targetState);
+
+    float timeToTargetSpeed		(State_t initState, State_t targetState);
+    float distanceToTargetSpeed	(State_t initState, State_t targetState);
+
+    void updateAcceleration			(State_t* state, State_t targetState);
+
+
+};
+
+#endif // DYNAMICMODEL_H
