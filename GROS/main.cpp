@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    DebugGUI gui(argc,argv,300,300);
+    DebugGUI gui(argc,argv,1000,900);
 
     while (1)
         gui.redraw();

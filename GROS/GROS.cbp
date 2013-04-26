@@ -35,9 +35,30 @@
 			<Add library="GL" />
 			<Add library="X11" />
 		</Linker>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="src/DynamicSim/dynamicmath.cpp" />
+		<Unit filename="src/DynamicSim/dynamicmath.h" />
+		<Unit filename="src/DynamicSim/dynamicmath_impl.h" />
+		<Unit filename="src/DynamicSim/dynamicmodel.cpp" />
+		<Unit filename="src/DynamicSim/dynamicmodel.h" />
+		<Unit filename="src/DynamicSim/dynamicsim.cpp" />
+		<Unit filename="src/DynamicSim/dynamicsim.h" />
+		<Unit filename="src/Entity/entity.cpp" />
+		<Unit filename="src/Entity/entity.h" />
+		<Unit filename="src/GUI/debuggui.cpp" />
+		<Unit filename="src/GUI/debuggui.h" />
+		<Unit filename="src/Heuristic/heuristic.cpp" />
+		<Unit filename="src/Heuristic/heuristic.h" />
+		<Unit filename="src/Node/node.cpp" />
+		<Unit filename="src/Node/node.h" />
+		<Unit filename="src/Utils/tinyxml2/tinyxml2.cpp" />
+		<Unit filename="src/Utils/tinyxml2/tinyxml2.h" />
+		<Unit filename="src/Utils/utils.cpp" />
+		<Unit filename="src/Utils/utils.h" />
+		<Unit filename="src/Utils/utils_impl.h" />
+		<Unit filename="src/constants.h" />
+		<Unit filename="src/gros.cpp" />
+		<Unit filename="src/gros.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
