@@ -7,3 +7,126 @@
 	<X11/X.h>
 	<X11/keysym.h>
 
+1366988094 source:/home/joao/Projects/gros/Prototypes/gros/GROS/main.c
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicmath.cpp
+	"dynamicmath.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicmath.h
+	<vector>
+	"dynamicmath_impl.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicmath_impl.h
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicmodel.cpp
+	"dynamicmodel.h"
+	<cmath>
+	<iostream>
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicmodel.h
+	<vector>
+	"../constants.h"
+	"dynamicmath.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/constants.h
+	<climits>
+	<vector>
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicsim.cpp
+	"dynamicsim.h"
+	"../Utils/utils.h"
+	<cstring>
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/DynamicSim/dynamicsim.h
+	<vector>
+	<queue>
+	"dynamicmodel.h"
+	"../constants.h"
+	"../Node/node.h"
+	"../Entity/entity.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Node/node.h
+	<cstdio>
+	<vector>
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Entity/entity.h
+	<vector>
+	<cstring>
+	"../constants.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Utils/utils.h
+	"utils_impl.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Utils/utils_impl.h
+	<cstring>
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/Entity/entity.cpp
+	"entity.h"
+	"../Utils/utils.h"
+	<cstring>
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/Heuristic/heuristic.cpp
+	"heuristic.h"
+	"../Node/node.h"
+	"../Utils/utils.h"
+	"../DynamicSim/dynamicsim.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Heuristic/heuristic.h
+	<vector>
+	<map>
+	<iostream>
+	"../Node/node.h"
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/Node/node.cpp
+	"node.h"
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/Utils/tinyxml2/tinyxml2.cpp
+	"tinyxml2.h"
+	<new>
+	<stddef.h>
+	<cstddef>
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/Utils/tinyxml2/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdarg.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<cstdarg>
+	<android/log.h>
+	<assert.h>
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/Utils/utils.cpp
+	"utils.h"
+	<cstring>
+
+1366585623 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/gros.cpp
+	"gros.h"
+	"DynamicSim/dynamicsim.h"
+	"Heuristic/heuristic.h"
+
+1366585623 /home/joao/Projects/gros/Prototypes/gros/GROS/src/gros.h
+	<vector>
+	"Entity/entity.h"
+	"Node/node.h"
+
+1366989160 source:/home/joao/Projects/gros/Prototypes/gros/GROS/src/GUI/debuggui.cpp
+	"debuggui.h"
+
+1366989188 /home/joao/Projects/gros/Prototypes/gros/GROS/src/GUI/debuggui.h
+	<stdio.h>
+	<stdlib.h>
+	<GL/glx.h>
+	<GL/gl.h>
+	<X11/X.h>
+	<X11/keysym.h>
+
+1366989295 source:/home/joao/Projects/gros/Prototypes/gros/GROS/main.cpp
+	"src/GUI/debuggui.h"
+
