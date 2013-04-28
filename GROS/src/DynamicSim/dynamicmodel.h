@@ -5,7 +5,7 @@
 #include "../constants.h"
 #include "dynamicmath.h"
 
-class DynamicModel: protected DynamicMath
+class DynamicModel: public DynamicMath
 {
     ///////////////////////////////////////////////////////////
     //   A simple dynamic simulating class that considers constant
@@ -14,7 +14,7 @@ class DynamicModel: protected DynamicMath
     //  Receives 3D state, but doesn't model heading
     //  Assumes movement (speed and acceleration) is linear between states
     ///////////////////////////////////////////////////////////
-protected:
+public:
     DynamicModel();
     virtual ~DynamicModel();
 
