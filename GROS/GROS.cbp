@@ -14,6 +14,9 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="sqlite3" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/GROS" prefix_auto="1" extension_auto="1" />
@@ -36,19 +39,21 @@
 			<Add library="X11" />
 		</Linker>
 		<Unit filename="main.cpp" />
-		<Unit filename="src/DynamicSim/dynamicmath.cpp" />
-		<Unit filename="src/DynamicSim/dynamicmath.h" />
-		<Unit filename="src/DynamicSim/dynamicmath_impl.h" />
-		<Unit filename="src/DynamicSim/dynamicmodel.cpp" />
-		<Unit filename="src/DynamicSim/dynamicmodel.h" />
-		<Unit filename="src/DynamicSim/dynamicsim.cpp" />
-		<Unit filename="src/DynamicSim/dynamicsim.h" />
+		<Unit filename="src/Database/database.cpp" />
+		<Unit filename="src/Database/database.h" />
 		<Unit filename="src/Entity/entity.cpp" />
 		<Unit filename="src/Entity/entity.h" />
 		<Unit filename="src/GUI/debuggui.cpp" />
 		<Unit filename="src/GUI/debuggui.h" />
+		<Unit filename="src/Heuristic/DynamicSim/dynamicmodel.cpp" />
+		<Unit filename="src/Heuristic/DynamicSim/dynamicmodel.h" />
+		<Unit filename="src/Heuristic/DynamicSim/dynamicsim.cpp" />
+		<Unit filename="src/Heuristic/DynamicSim/dynamicsim.h" />
 		<Unit filename="src/Heuristic/heuristic.cpp" />
 		<Unit filename="src/Heuristic/heuristic.h" />
+		<Unit filename="src/Math/math.cpp" />
+		<Unit filename="src/Math/math.h" />
+		<Unit filename="src/Math/math_impl.h" />
 		<Unit filename="src/Node/node.cpp" />
 		<Unit filename="src/Node/node.h" />
 		<Unit filename="src/Utils/tinyxml2/tinyxml2.cpp" />
