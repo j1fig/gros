@@ -4,7 +4,13 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <tr1/memory>
+
 #include "../Node/node.h"
+#include "../Entity/entity.h"
+
+typedef std::tr1::shared_ptr<Entity> entityPtr;
+typedef std::tr1::shared_ptr<Node> nodePtr;
 
 // Forward declarations
 class DynamicSim;
@@ -17,7 +23,7 @@ public:
     Heuristic();
     virtual ~Heuristic();
 
-    friend class GROS;
+    void init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities);
 
 private:
     struct Vertex
@@ -27,21 +33,18 @@ private:
         char vertex;
     };
 
-    void init();
-    void init(std::vector<Node> nodes);
-
     void constructGraph				(void);
     std::map<char,float> Dijkstra	(char node);
 
     float getOptimisticCost			(short node1, short node2);
 
-    DynamicSim* _dynamicSim;
+    DynamicSim* dynamicSim;
 
+    std::vector<nodePtr> nodes;
+    std::vector<entityPtr> entities;
 
-    std::vector<Node> _nodes;
-    std::map< char, std::map<char,float> > _graph;
-
-    std::map< char, std::map<char,float> > _heuristic;
+    std::map< char, std::map<char,float> > graph;
+    std::map< char, std::map<char,float> > heuristic;
 };
 
 #endif // HEURISTIC_H

@@ -1,5 +1,5 @@
 #include "dynamicsim.h"
-#include "../Utils/utils.h"
+#include "../../Utils/utils.h"
 
 #include <cstring>
 
@@ -11,27 +11,11 @@ DynamicSim::~DynamicSim()
 {
 }
 
-void DynamicSim::init()
+void DynamicSim::init(std::vector<nodePtr> nodes,std::vector<entityPtr> entities)
 {
     // Clears previous nodes and entities
-    this->_nodes.clear();
-    this->_entities.clear();
-
-//    while (!this->_nodeQueue.empty())
-//        this->_nodeQueue.pop();
-
-//    while (!this->_entityQueue.empty())
-//        this->_entityQueue.pop();
-
-
-    DynamicModel::initModel();
-}
-
-void DynamicSim::init(std::vector<Node> nodes,std::vector<Entity> entities)
-{
-    // Clears previous nodes and entities
-    this->_nodes.clear();
-    this->_entities.clear();
+    this->nodes.clear();
+    this->entities.clear();
 
 //    while (!this->_nodeQueue.empty())
 //        this->_nodeQueue.pop();
@@ -40,8 +24,8 @@ void DynamicSim::init(std::vector<Node> nodes,std::vector<Entity> entities)
 //        this->_entityQueue.pop();
 
     // Sets new nodes and entities
-    this->_nodes = nodes;
-    this->_entities = entities;
+    this->nodes = nodes;
+    this->entities = entities;
 
 //    for (int nodeIndex=0; nodeIndex<nodes.size(); nodeIndex++)
 //    {
@@ -62,10 +46,10 @@ short DynamicSim::update(float timeStep)
     short entitiesUpdated = 0;
 
     // Updates all entities by the given time-step
-    for (short entityIndex=0; entityIndex<this->_entities.size(); entityIndex++)
+    for (short entityIndex=0; entityIndex<this->entities.size(); entityIndex++)
     {
         // Checks current entity command and proceeds accordingly
-        switch (this->_entities[entityIndex].getCommand())
+        switch (this->entities[entityIndex]->getCommand())
         {
         case COMMAND_MOVE:
             // There can be 3 scenarios
@@ -96,9 +80,9 @@ short DynamicSim::update(float timeStep)
         // If time until next node is greater than the step, simply integrates the state
 
 
-        State_t entityState = this->_entities[entityIndex].getState();
+        State_t entityState = this->entities[entityIndex]->getState();
         DynamicModel::integrate(&entityState,timeStep);
-        this->_entities[entityIndex].setState(entityState);
+        this->entities[entityIndex]->setState(entityState);
 
         entitiesUpdated++;
     }
@@ -107,45 +91,37 @@ short DynamicSim::update(float timeStep)
 
 }
 
-std::vector<Node> DynamicSim::getNodes()
+nodePtr DynamicSim::findNode(int number)
 {
-    return this->_nodes;
-}
+    nodePtr nullNode;
 
-std::vector<Entity> DynamicSim::getEntities()
-{
-    return this->_entities;
-}
-
-Node DynamicSim::findNode(int number)
-{
-    Node nullNode;
-
-    nullNode.setNumber(-1);
+    nullNode->setNumber(-1);
 
 
-    for (int nodeIndex=0; nodeIndex<_nodes.size(); nodeIndex++)
+    for (int nodeIndex=0; nodeIndex<nodes.size(); nodeIndex++)
     {
-        if (_nodes[nodeIndex].getNumber() == number)
+        if (nodes[nodeIndex]->getNumber() == number)
         {
-            return _nodes[nodeIndex];
+            return nodes[nodeIndex];
         }
     }
 
     return nullNode;
 }
 
-Entity DynamicSim::findEntity(char *id)
+entityPtr DynamicSim::findEntity(char *id)
 {
-    for (int entityIndex=0; entityIndex<_entities.size(); entityIndex++)
+    entityPtr nullEntity(new Entity(""));
+
+    for (int entityIndex=0; entityIndex<entities.size(); entityIndex++)
     {
-        if (strcmp(_entities[entityIndex].getID(),id) == 0)
+        if (strcmp(entities[entityIndex]->getID(),id) == 0)
         {
-            return _entities[entityIndex];
+            return entities[entityIndex];
         }
     }
 
-    return 0;
+    return nullEntity;
 }
 
 float DynamicSim::nodeDistance(short node1, short node2)
@@ -158,13 +134,13 @@ float DynamicSim::nodeDistance(short node1, short node2)
     Utils::initStruct<State_t>(&initState);
     Utils::initStruct<State_t>(&endState);
 
-    initState.position[X] = this->_nodes[node1].getX();
-    initState.position[Y] = this->_nodes[node1].getY();
-    initState.position[Z] = this->_nodes[node1].getZ();
+    initState.position[X] = this->nodes[node1]->getX();
+    initState.position[Y] = this->nodes[node1]->getY();
+    initState.position[Z] = this->nodes[node1]->getZ();
 
-    endState.position[X] = this->_nodes[node2].getX();
-    endState.position[Y] = this->_nodes[node2].getY();
-    endState.position[Z] = this->_nodes[node2].getZ();
+    endState.position[X] = this->nodes[node2]->getX();
+    endState.position[Y] = this->nodes[node2]->getY();
+    endState.position[Z] = this->nodes[node2]->getZ();
 
     nodeDistance = DynamicModel::stateDistance(initState,endState);
 

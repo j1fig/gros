@@ -25,7 +25,7 @@ SUITE(DynamicModelTestSuite)
 {
     TEST_FIXTURE(DynamicModelFixture,firstTest)
     {
-        CHECK(true);
+//        dynamicModel->
     }
 }
 

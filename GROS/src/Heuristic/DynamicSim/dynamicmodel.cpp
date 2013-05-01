@@ -46,10 +46,10 @@ float DynamicModel::timeToTarget(State_t initState, State_t targetState)
 
     float timeToTarget = 0;
 
-    if (DynamicMath::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
+    if (Math::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
     {
-        speed = DynamicMath::vectorModule<float>(initState.linearVelocity);
-        acceleration = DynamicMath::vectorModule<float>(initState.linearAcceleration);
+        speed = Math::vectorModule<float>(initState.linearVelocity);
+        acceleration = Math::vectorModule<float>(initState.linearAcceleration);
 
         t1 = (-speed + sqrt(pow(speed,2) + (4*(acceleration/2)*distance)))/(2*(acceleration/2));
         t1 = (-speed - sqrt(pow(speed,2) + (4*(acceleration/2)*distance)))/(2*(acceleration/2));
@@ -127,11 +127,11 @@ float DynamicModel::timeToTargetSpeed(State_t initState, State_t targetState)
 
     float timeToTargetSpeed = 0.0;
 
-    if (DynamicMath::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
+    if (Math::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
     {
-        initSpeed = DynamicMath::vectorModule<float>(initState.linearVelocity);
-        targetSpeed = DynamicMath::vectorModule<float>(targetState.linearVelocity);
-        initAcceleration = DynamicMath::vectorModule<float>(initState.linearAcceleration);
+        initSpeed = Math::vectorModule<float>(initState.linearVelocity);
+        targetSpeed = Math::vectorModule<float>(targetState.linearVelocity);
+        initAcceleration = Math::vectorModule<float>(initState.linearAcceleration);
 
         // Tests the 3 cases - initSpeed less/equal/greater than targetSpeed
         if (initSpeed < targetSpeed)
@@ -184,10 +184,10 @@ float DynamicModel::distanceToTargetSpeed(State_t initState, State_t targetState
 
   float timeToTargetSpeed = this->timeToTargetSpeed(initState,targetState);
 
-  if (DynamicMath::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
+  if (Math::checkColinearity<float>(initState.linearVelocity,initState.linearAcceleration))
   {
-    initSpeed = DynamicMath::vectorModule<float>(initState.linearVelocity);
-    initAcceleration = DynamicMath::vectorModule<float>(initState.linearAcceleration);
+    initSpeed = Math::vectorModule<float>(initState.linearVelocity);
+    initAcceleration = Math::vectorModule<float>(initState.linearAcceleration);
 
     distance = ((initAcceleration/2)*pow(timeToTargetSpeed,2)) + (initSpeed*timeToTargetSpeed);
   }

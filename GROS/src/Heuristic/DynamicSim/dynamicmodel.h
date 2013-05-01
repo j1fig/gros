@@ -2,10 +2,10 @@
 #define DYNAMICMODEL_H
 
 #include <vector>
-#include "../constants.h"
-#include "dynamicmath.h"
+#include "../../constants.h"
+#include "../../Math/math.h"
 
-class DynamicModel: public DynamicMath
+class DynamicModel
 {
     ///////////////////////////////////////////////////////////
     //   A simple dynamic simulating class that considers constant
@@ -32,6 +32,7 @@ public:
     virtual void updateAcceleration			(State_t* state, State_t targetState);
 
     virtual void updateStatePosition(State_t* state, float percent, State_t origState, State_t destState);
+
 
 };
 

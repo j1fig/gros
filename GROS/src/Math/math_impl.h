@@ -1,8 +1,8 @@
-#ifndef DYNAMICMATH_IMPL_H
-#define DYNAMICMATH_IMPL_H
+#ifndef MATH_IMPL_H
+#define MATH_IMPL_H
 
 template <class T>
-bool DynamicMath::checkColinearity   (std::vector<T> firstVec,std::vector<T> secondVec)
+bool Math::checkColinearity   (std::vector<T> firstVec,std::vector<T> secondVec)
 {
     bool vectorsColinear = false;
 
@@ -12,11 +12,11 @@ bool DynamicMath::checkColinearity   (std::vector<T> firstVec,std::vector<T> sec
     // If vector sizes match, they can be colinear
     if (firstVec.size() == secondVec.size())
     {
-        firstVecModule = this->vectorModule<T>(firstVec);
-        secondVecModule = this->vectorModule<T>(secondVec);
+        firstVecModule = vectorModule<T>(firstVec);
+        secondVecModule = vectorModule<T>(secondVec);
 
-        this->normalizeVector<T>(firstVec);
-        this->normalizeVector<T>(secondVec);
+        normalizeVector<T>(firstVec);
+        normalizeVector<T>(secondVec);
 
         // Assumes true vale before check
         vectorsColinear = true;
@@ -33,9 +33,9 @@ bool DynamicMath::checkColinearity   (std::vector<T> firstVec,std::vector<T> sec
 
 
 template <class T>
-void DynamicMath::normalizeVector    (std::vector<T>& vec)
+void Math::normalizeVector    (std::vector<T>& vec)
 {
-    T vecModule = this->vectorModule(vec);
+    T vecModule = vectorModule(vec);
 
     for (short vecIndex=0; vecIndex<vec.size(); vecIndex++)
     {
@@ -44,7 +44,7 @@ void DynamicMath::normalizeVector    (std::vector<T>& vec)
 }
 
 template <class T>
-T DynamicMath::vectorModule    (std::vector<T> vec)
+T Math::vectorModule    (std::vector<T> vec)
 {
     T module = 0;
     T squaredSum = 0;
@@ -59,4 +59,4 @@ T DynamicMath::vectorModule    (std::vector<T> vec)
     return module;
 }
 
-#endif // DYNAMICMATH_IMPL_H
+#endif // MATH_IMPL_H

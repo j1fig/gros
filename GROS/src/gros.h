@@ -2,13 +2,16 @@
 #define GROS_H
 
 #include <vector>
+#include <tr1/memory>
 
 #include "Entity/entity.h"
 #include "Node/node.h"
 
 // Forward declarations
-class DynamicSim;
 class Heuristic;
+
+typedef std::tr1::shared_ptr<Entity> entityPtr;
+typedef std::tr1::shared_ptr<Node> nodePtr;
 
 
 class GROS {
@@ -16,8 +19,7 @@ public:
     GROS();
     virtual ~GROS();
 
-    void init();
-    void init(std::vector<Node> nodes, std::vector<Entity> entities);
+    void init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities);
 
     void addEntity(char* id);
     void removeEntity(char* id);
@@ -31,11 +33,10 @@ public:
 
 private:
 
-    DynamicSim* _dynamicSim;
-    Heuristic* _heuristic;
+    Heuristic* heuristic;
 
-    std::vector<Entity> _entities;
-    std::vector<Node> _nodes;
+    std::vector<nodePtr> nodes;
+    std::vector<entityPtr> entities;
 };
 
 #endif // GROS_H

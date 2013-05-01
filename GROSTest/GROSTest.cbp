@@ -34,8 +34,34 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="include/src" />
 		</Compiler>
+		<Linker>
+			<Add library="lib/libUnitTest++.a" />
+		</Linker>
+		<Unit filename="../GROS/src/DynamicSim/dynamicmath.cpp" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicmath.h" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicmath_impl.h" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicmodel.cpp" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicmodel.h" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicsim.cpp" />
+		<Unit filename="../GROS/src/DynamicSim/dynamicsim.h" />
+		<Unit filename="../GROS/src/Entity/entity.cpp" />
+		<Unit filename="../GROS/src/Entity/entity.h" />
+		<Unit filename="../GROS/src/Heuristic/heuristic.cpp" />
+		<Unit filename="../GROS/src/Heuristic/heuristic.h" />
+		<Unit filename="../GROS/src/Node/node.cpp" />
+		<Unit filename="../GROS/src/Node/node.h" />
+		<Unit filename="../GROS/src/Utils/tinyxml2/tinyxml2.cpp" />
+		<Unit filename="../GROS/src/Utils/tinyxml2/tinyxml2.h" />
+		<Unit filename="../GROS/src/Utils/utils.cpp" />
+		<Unit filename="../GROS/src/Utils/utils.h" />
+		<Unit filename="../GROS/src/Utils/utils_impl.h" />
+		<Unit filename="../GROS/src/constants.h" />
+		<Unit filename="../GROS/src/gros.cpp" />
+		<Unit filename="../GROS/src/gros.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="testDynamicModel.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
