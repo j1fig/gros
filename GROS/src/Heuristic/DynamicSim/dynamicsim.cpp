@@ -5,10 +5,12 @@
 
 DynamicSim::DynamicSim()
 {
+    dynamicModel = new DynamicModel();
 }
 
 DynamicSim::~DynamicSim()
 {
+    delete dynamicModel;
 }
 
 void DynamicSim::init(std::vector<nodePtr> nodes,std::vector<entityPtr> entities)
@@ -38,7 +40,7 @@ void DynamicSim::init(std::vector<nodePtr> nodes,std::vector<entityPtr> entities
 //    }
 
 
-    DynamicModel::initModel();
+    dynamicModel->initModel();
 }
 
 short DynamicSim::update(float timeStep)
@@ -46,7 +48,7 @@ short DynamicSim::update(float timeStep)
     short entitiesUpdated = 0;
 
     // Updates all entities by the given time-step
-    for (short entityIndex=0; entityIndex<this->entities.size(); entityIndex++)
+    for (unsigned short entityIndex=0; entityIndex<this->entities.size(); entityIndex++)
     {
         // Checks current entity command and proceeds accordingly
         switch (this->entities[entityIndex]->getCommand())
@@ -81,7 +83,7 @@ short DynamicSim::update(float timeStep)
 
 
         State_t entityState = this->entities[entityIndex]->getState();
-        DynamicModel::integrate(&entityState,timeStep);
+        dynamicModel->integrate(&entityState,timeStep);
         this->entities[entityIndex]->setState(entityState);
 
         entitiesUpdated++;
@@ -98,7 +100,7 @@ nodePtr DynamicSim::findNode(int number)
     nullNode->setNumber(-1);
 
 
-    for (int nodeIndex=0; nodeIndex<nodes.size(); nodeIndex++)
+    for (unsigned int nodeIndex=0; nodeIndex<nodes.size(); nodeIndex++)
     {
         if (nodes[nodeIndex]->getNumber() == number)
         {
@@ -113,7 +115,7 @@ entityPtr DynamicSim::findEntity(char *id)
 {
     entityPtr nullEntity(new Entity(""));
 
-    for (int entityIndex=0; entityIndex<entities.size(); entityIndex++)
+    for (unsigned int entityIndex=0; entityIndex<entities.size(); entityIndex++)
     {
         if (strcmp(entities[entityIndex]->getID(),id) == 0)
         {
@@ -142,7 +144,7 @@ float DynamicSim::nodeDistance(short node1, short node2)
     endState.position[Y] = this->nodes[node2]->getY();
     endState.position[Z] = this->nodes[node2]->getZ();
 
-    nodeDistance = DynamicModel::stateDistance(initState,endState);
+    nodeDistance = dynamicModel->stateDistance(initState,endState);
 
     return nodeDistance;
 }

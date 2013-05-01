@@ -21,8 +21,7 @@ typedef std::tr1::shared_ptr<Entity> entityPtr;
 typedef std::tr1::shared_ptr<Node> nodePtr;
 
 
-
-class DynamicSim: protected DynamicModel
+class DynamicSim
 {
 public:
     DynamicSim();
@@ -41,6 +40,8 @@ public:
     virtual entityPtr findEntity   (char* id);
 
 private:
+    DynamicModel* dynamicModel;
+
     std::vector<nodePtr> nodes;
     std::vector<entityPtr> entities;
 
