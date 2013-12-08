@@ -13,5 +13,9 @@
 *.a
 
 # Directories
-GROS/bin/*
-GROSTest/bin/*
+bin
+lib
+build
+release
+debug
+
