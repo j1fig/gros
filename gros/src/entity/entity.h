@@ -3,6 +3,7 @@
 
 #define MAX_ENTITY_STRING_SIZE 10
 
+#include <boost/smart_ptr.hpp>
 #include <vector>
 #include <cstring>
 #include "../constants.h"
@@ -14,6 +15,8 @@ using namespace std;
 class Entity
 {
 public:
+    typedef boost::shared_ptr<Entity> Ptr;
+
     Entity				(const char* id);
     virtual ~Entity		();
 

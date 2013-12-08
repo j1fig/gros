@@ -4,13 +4,11 @@
 #include <vector>
 #include <map>
 #include <iostream>
-#include <tr1/memory>
+#include <boost/smart_ptr.hpp>
 
 #include "../node/node.h"
 #include "../entity/entity.h"
 
-typedef std::tr1::shared_ptr<Entity> entityPtr;
-typedef std::tr1::shared_ptr<Node> nodePtr;
 
 // Forward declarations
 class DynamicSim;
@@ -23,7 +21,7 @@ public:
     Heuristic();
     virtual ~Heuristic();
 
-    void init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities);
+    void init(std::vector<Node::Ptr> nodes, std::vector<Entity::Ptr> entities);
 
 private:
     struct Vertex
@@ -38,10 +36,10 @@ private:
 
     float getOptimisticCost			(short node1, short node2);
 
-    DynamicSim* dynamicSim;
+    boost::shared_ptr<DynamicSim> dynamicSim;
 
-    std::vector<nodePtr> nodes;
-    std::vector<entityPtr> entities;
+    std::vector<Node::Ptr> nodes;
+    std::vector<Entity::Ptr> entities;
 
     std::map< char, std::map<char,float> > graph;
     std::map< char, std::map<char,float> > heuristic;

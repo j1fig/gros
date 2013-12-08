@@ -10,15 +10,13 @@
 
 #include <vector>
 #include <queue>
-#include <tr1/memory>
+#include <boost/shared_ptr.hpp>
+
 
 #include "dynamicmodel.h"
 #include "../../constants.h"
 #include "../../node/node.h"
 #include "../../entity/entity.h"
-
-typedef std::tr1::shared_ptr<Entity> entityPtr;
-typedef std::tr1::shared_ptr<Node> nodePtr;
 
 
 class DynamicSim
@@ -27,7 +25,7 @@ public:
     DynamicSim();
     virtual ~DynamicSim();
 
-    virtual void init              (std::vector<nodePtr> nodes,std::vector<entityPtr> entities);
+    virtual void init              (std::vector<Node::Ptr> nodes,std::vector<Entity::Ptr> entities);
 
     virtual float timeToNextNode   (char* entityId);
 
@@ -35,15 +33,15 @@ public:
 
     virtual short update          (float timeStep);
 
-    virtual nodePtr findNode       (int number);
+    virtual Node::Ptr findNode       (int number);
 
-    virtual entityPtr findEntity   (char* id);
+    virtual Entity::Ptr findEntity   (char* id);
 
 private:
-    DynamicModel* dynamicModel;
+    boost::shared_ptr<DynamicModel> dynamicModel;
 
-    std::vector<nodePtr> nodes;
-    std::vector<entityPtr> entities;
+    std::vector<Node::Ptr> nodes;
+    std::vector<Entity::Ptr> entities;
 
 //    std::priority_queue<Node,std::vector<Node>,Node::OrderByNumber> _nodeQueue;
 //    std::priority_queue<Entity,std::vector<Entity>,Entity::OrderByID> _entityQueue;

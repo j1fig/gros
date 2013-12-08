@@ -2,20 +2,19 @@
 #include "../node/node.h"
 #include "../utils/utils.h"
 #include "dynamicsim/dynamicsim.h"
-
+#include <boost/make_shared.hpp>
 
 Heuristic::Heuristic()
 {
-    this->dynamicSim = new DynamicSim();
+    this->dynamicSim = boost::make_shared<DynamicSim>();
 }
 
 Heuristic::~Heuristic()
 {
-    delete this->dynamicSim;
 }
 
 
-void Heuristic::init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities)
+void Heuristic::init(std::vector<Node::Ptr> nodes, std::vector<Entity::Ptr> entities)
 {
     std::map< char, std::map<char,float> >::iterator node;
 

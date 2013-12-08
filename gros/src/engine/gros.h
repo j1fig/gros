@@ -2,7 +2,7 @@
 #define GROS_H
 
 #include <vector>
-#include <tr1/memory>
+#include <boost/smart_ptr.hpp>
 
 #include "../entity/entity.h"
 #include "../node/node.h"
@@ -10,16 +10,19 @@
 // Forward declarations
 class Heuristic;
 
-typedef std::tr1::shared_ptr<Entity> entityPtr;
-typedef std::tr1::shared_ptr<Node> nodePtr;
 
 
-class GROS {
+class GROS 
+{
 public:
+    
     GROS();
     virtual ~GROS();
 
-    void init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities);
+    void run ();
+
+private:
+    void init(std::vector<Node::Ptr> nodes, std::vector<Entity::Ptr> entities);
 
     void addEntity(char* id);
     void removeEntity(char* id);
@@ -33,10 +36,10 @@ public:
 
 private:
 
-    Heuristic* heuristic;
+    boost::shared_ptr<Heuristic> heuristic;
 
-    std::vector<nodePtr> nodes;
-    std::vector<entityPtr> entities;
+    std::vector<Node::Ptr> nodes;
+    std::vector<Entity::Ptr> entities;
 };
 
 #endif // GROS_H

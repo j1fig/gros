@@ -1,19 +1,18 @@
 #include "dynamicsim.h"
 #include "../../utils/utils.h"
-
+#include <boost/make_shared.hpp>
 #include <cstring>
 
 DynamicSim::DynamicSim()
 {
-    dynamicModel = new DynamicModel();
+    dynamicModel = boost::make_shared<DynamicModel>();
 }
 
 DynamicSim::~DynamicSim()
 {
-    delete dynamicModel;
 }
 
-void DynamicSim::init(std::vector<nodePtr> nodes,std::vector<entityPtr> entities)
+void DynamicSim::init(std::vector<Node::Ptr> nodes,std::vector<Entity::Ptr> entities)
 {
     // Clears previous nodes and entities
     this->nodes.clear();
@@ -93,9 +92,9 @@ short DynamicSim::update(float timeStep)
 
 }
 
-nodePtr DynamicSim::findNode(int number)
+Node::Ptr DynamicSim::findNode(int number)
 {
-    nodePtr nullNode;
+    Node::Ptr nullNode;
 
     nullNode->setNumber(-1);
 
@@ -111,9 +110,9 @@ nodePtr DynamicSim::findNode(int number)
     return nullNode;
 }
 
-entityPtr DynamicSim::findEntity(char *id)
+Entity::Ptr DynamicSim::findEntity(char *id)
 {
-    entityPtr nullEntity(new Entity(""));
+    Entity::Ptr nullEntity(new Entity(""));
 
     for (unsigned int entityIndex=0; entityIndex<entities.size(); entityIndex++)
     {

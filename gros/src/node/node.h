@@ -1,12 +1,15 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <boost/smart_ptr.hpp>
 #include <cstdio>
 #include <vector>
 
 class Node
 {
 public:
+    typedef boost::shared_ptr<Node> Ptr;
+    
     Node			(void);
     virtual ~Node	(void);
 

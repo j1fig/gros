@@ -1,17 +1,23 @@
 #include "gros.h"
 #include "../heuristic/heuristic.h"
+#include <boost/smart_ptr.hpp>
 
 GROS::GROS()
 {
-    this->heuristic = new Heuristic();
+    this->heuristic = boost::make_shared<Heuristic>();
 }
 
 GROS::~GROS()
 {
-    delete this->heuristic;
 }
 
-void GROS::init(std::vector<nodePtr> nodes, std::vector<entityPtr> entities)
+
+void GROS::run()
+{
+
+}
+
+void GROS::init(std::vector<Node::Ptr> nodes, std::vector<Entity::Ptr> entities)
 {
     this->nodes.clear();
     this->entities.clear();
