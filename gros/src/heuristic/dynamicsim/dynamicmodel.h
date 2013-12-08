@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "../../constants.h"
-#include "../../Math/math.h"
+#include "../../math/math.h"
 
 class DynamicModel
 {

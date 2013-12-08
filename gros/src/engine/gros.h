@@ -4,8 +4,8 @@
 #include <vector>
 #include <tr1/memory>
 
-#include "Entity/entity.h"
-#include "Node/node.h"
+#include "../entity/entity.h"
+#include "../node/node.h"
 
 // Forward declarations
 class Heuristic;

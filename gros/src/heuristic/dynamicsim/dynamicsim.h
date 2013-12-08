@@ -14,8 +14,8 @@
 
 #include "dynamicmodel.h"
 #include "../../constants.h"
-#include "../../Node/node.h"
-#include "../../Entity/entity.h"
+#include "../../node/node.h"
+#include "../../entity/entity.h"
 
 typedef std::tr1::shared_ptr<Entity> entityPtr;
 typedef std::tr1::shared_ptr<Node> nodePtr;

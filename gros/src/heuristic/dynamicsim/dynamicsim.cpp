@@ -1,5 +1,5 @@
 #include "dynamicsim.h"
-#include "../../Utils/utils.h"
+#include "../../utils/utils.h"
 
 #include <cstring>
 

@@ -1,7 +1,7 @@
 #include "heuristic.h"
-#include "../Node/node.h"
-#include "../Utils/utils.h"
-#include "DynamicSim/dynamicsim.h"
+#include "../node/node.h"
+#include "../utils/utils.h"
+#include "dynamicsim/dynamicsim.h"
 
 
 Heuristic::Heuristic()

@@ -1,5 +1,5 @@
 #include "gros.h"
-#include "Heuristic/heuristic.h"
+#include "../heuristic/heuristic.h"
 
 GROS::GROS()
 {
